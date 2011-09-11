@@ -28,3 +28,5 @@ tmtags
 public/phoenix/js/all.bundle.js
 vendor/ruby
 public/phoneix/docs/
+scala-0.9.1
+api/bin
