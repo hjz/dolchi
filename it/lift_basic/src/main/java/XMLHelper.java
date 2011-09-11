@@ -1,4 +1,4 @@
-
+package code.snippet;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -15,7 +15,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-
 public class XMLHelper {
 
 	 public static List<Element> getElementsByTag(Document doc, String sTag) {
@@ -29,7 +28,7 @@ public class XMLHelper {
 		 }
 		 return elements;
 	 }
-	 
+
 	 public static List<Element> getElementsByTag(Element el, String sTag) {
 		 List<Element> elements = new ArrayList<Element>();
 		 NodeList nList = el.getElementsByTagName(sTag);
@@ -41,7 +40,7 @@ public class XMLHelper {
 		 }
 		 return elements;
 	 }
-	 
+
 	 public static String getTagValue(String sTag, Element eElement) {
 		 NodeList nlList = eElement.getElementsByTagName(sTag);
 		 if(nlList == null)
@@ -55,6 +54,6 @@ public class XMLHelper {
 		 Node nValue = (Node) nlList.item(0);
 		 return nValue == null ? "" : nValue.getNodeValue();
 	 }
-	 	
+
 
 }

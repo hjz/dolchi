@@ -1,4 +1,4 @@
-
+package code.snippet;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -20,6 +20,7 @@ import org.xml.sax.SAXException;
 public class HTTPHelper {
 
 	public static StringBuilder getHTML(String url) throws IllegalStateException, IOException {
+
 		BufferedReader in = null;
 		StringBuilder sb = null;
         try {
@@ -43,12 +44,11 @@ public class HTTPHelper {
                 }
             }
         }
-        return sb; 
+        return sb;
 	}
-	
+
 	 public static Document getXML(String url) throws SAXException, IOException, ParserConfigurationException {
 		 StringBuilder html = HTTPHelper.getHTML(url);
-		 System.out.println(html.toString());
 		 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		 DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		 ByteArrayInputStream bs = new ByteArrayInputStream(html.toString().getBytes());

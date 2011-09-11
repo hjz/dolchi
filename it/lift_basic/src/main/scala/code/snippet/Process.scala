@@ -14,15 +14,7 @@ import scala.io.Source
 import scala.xml.parsing.XhtmlParser
 import org.jsoup.Jsoup
 import java.util.{Date, GregorianCalendar}
-
-// import comet.ApiServer
-
-case class ArticleInfo(
-  geo: String,
-  date: Date,
-  desc: String,
-  keywords: Array[String]
-)
+import java.net.URLEncoder
 
 /**
  * A snippet transforms input to output... it transforms
@@ -47,7 +39,7 @@ object Process {
   def render = {
     var url = ""
     def process() {
-      S.redirectTo("/display?url=%s".format(url))
+      S.redirectTo("/display?url=%s".format(URLEncoder.encode(url)))
     }
     "url=url" #> SHtml.onSubmit(url = _)
     "type=submit" #> SHtml.onSubmitUnit(process)

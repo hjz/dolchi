@@ -1,4 +1,4 @@
-
+package code.snippet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class WikipediaService {
 
 	private static Pattern wikiResults =  Pattern.compile("([^\"]+)");
-    
+
 	public static List<String> getMatchedArticleNames(String query) throws IllegalStateException, IOException {
 		StringBuilder html = HTTPHelper.getHTML("http://en.wikipedia.org/w/api.php?action=opensearch&search=" + query);
 		Matcher matcher = wikiResults.matcher(html.toString().substring(0,html.length()-3));
@@ -23,15 +23,15 @@ public class WikipediaService {
         }
 		return results;
 	}
-	
+
 	public static String getArticle(String query) throws IllegalStateException, IOException {
 		List<String> topResults = getMatchedArticleNames(query);
 		if(topResults.size() == 0)
 			return "";
 		else
-			return "http://en.wikipedia.org/wiki/" + topResults.get(0);
+			return topResults.get(0);
 	}
-	
+
 	public static void main(String[] args) throws IllegalStateException, IOException {
 		System.out.println(getArticle("barack"));
 	}
