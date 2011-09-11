@@ -1,5 +1,0 @@
-# Routes 
-
-GET      /           controllers.Application.index()
-
-            
