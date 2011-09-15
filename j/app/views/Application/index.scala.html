@@ -1,0 +1,56 @@
+@(title:String, n:Iterable[String], wiki: Iterable[String], search: String, url: String, article: String)
+
+<div style="float:left">
+</div>
+
+<div style="float:left">
+  @article
+<div>
+
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: '@search',
+  interval: 30000,
+  title: 'Related tweets',
+  subject: 'Across the sky',
+  width: 250,
+  height: 300,
+  theme: {
+    shell: {
+      background: '#8ec1da',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#1985b5'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    hashtags: true,
+    timestamp: true,
+    avatars: true,
+    toptweets: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>
+<ul>
+@for(p <- n) {
+    <li>@p</li>
+}
+</ul>
+</div>
+
+
+@main(title) {
+
+    @views.defaults.html.welcome(title)
+
+}
+
